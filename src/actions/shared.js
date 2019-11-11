@@ -11,7 +11,7 @@ import {
   receiveQuestions,
 } from "./questions";
 
-export function receiveInitialData() {
+export function handleInitialData() {
   return (dispatch) => {
     return getInitialData().then(({ users, questions }) => {
       dispatch(receiveUsers(users))

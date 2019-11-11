@@ -3,7 +3,7 @@ import {
   ADD_USER_ANSWER,
 } from '../actions/users';
 
-export default function users(state = [], action) {
+export default function users(state = {}, action) {
   switch(action.type) {
     case RECEIVE_USERS:
       return action.users;
