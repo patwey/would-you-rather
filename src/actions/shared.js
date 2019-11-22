@@ -14,8 +14,8 @@ import {
 export function handleInitialData() {
   return (dispatch) => {
     return getInitialData().then(({ users, questions }) => {
-      dispatch(receiveUsers(users))
-      dispatch(receiveQuestions(questions))
+      dispatch(receiveUsers(users));
+      dispatch(receiveQuestions(questions));
     });
   };
 };
@@ -24,11 +24,12 @@ export function handleAddQuestionAnswer(answer) {
   return (dispatch) => {
     return saveQuestionAnswer(answer)
       .then(() => {
-        dispatch(addQuestionAnswer(answer))
-        dispatch(addUserAnswer(answer))
+        dispatch(addQuestionAnswer(answer));
+        dispatch(addUserAnswer(answer));
       })
-      .catch(() => {
-        alert('An error occurred.')
+      .catch((error) => {
+        console.log(error);
+        alert('An error occurred.');
       });
   };
 }

@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function QuestionOverview({
   question,
   user,
 }) {
   const {
+    id,
     optionOne,
     optionTwo,
   } = question;
@@ -25,16 +27,17 @@ function QuestionOverview({
       </div>
       <div className="question-overview__body">
         <div className="question-overview__option">
-          A:
-          <span>{optionOne.text}</span>
+          A: {optionOne.text}
         </div>
         <div className="question-overview__option">
-          B:
-          <span>{optionTwo.text}</span>
+          B: {optionTwo.text}
         </div>
-        <a className="question-overview__view-link" href="#">
+        <Link
+          to={`questions/${id}`}
+          className="question-overview__link"
+        >
           View
-        </a>
+        </Link>
       </div>
     </div>
   );

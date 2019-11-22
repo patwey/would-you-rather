@@ -49,17 +49,17 @@ class QuestionOverviewList extends React.Component {
   }
 }
 
-const isAnswered = (userId, question) => {
-  const { optionOne, optionTwo } = question;
+const mapStateToProps = ({ authedUser, questions: questionsState, users }) => {
+  const answers = users[authedUser].answers;
+  const questions = Object.values(questionsState);
 
-  return optionOne.votes.includes(userId) ||
-    optionTwo.votes.includes(userId);
-};
-
-const mapStateToProps = ({ authedUser, questions, users }) => {
   return {
-    answeredQuestions: Object.values(questions).filter((question) => isAnswered(authedUser, question)),
-    unansweredQuestions: Object.values(questions).filter((question) => !isAnswered(authedUser, question)),
+    answeredQuestions: questions
+      .filter(({ id }) => answers[id])
+      .sort(question => -question.timestamp),
+    unansweredQuestions: questions
+      .filter(({ id }) => !answers[id])
+      .sort((question) => -question.timestamp),
     users,
   };
 };
