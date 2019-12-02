@@ -39,35 +39,43 @@ class QuestionAnswerForm extends React.Component {
     } = question;
 
     return (
-      <form
-        className="question-answer-form"
-        onSubmit={this.handleSubmit}
-      >
-        <div className="question-answer-form__option">
-          <input
-            type="radio"
-            name="optionOne"
-            value="optionOne"
-            checked={this.state.answer === "optionOne"}
-            onChange={this.handleAnswer}
-          />
-          <label htmlFor="optionOne">
-            A: {optionOne.text}
-          </label>
-        </div>
-        <div className="question-answer-form__option">
-          <input
-            type="radio"
-            name="optionTwo"
-            value="optionTwo"
-            checked={this.state.answer === "optionTwo"}
-            onChange={this.handleAnswer}
-          />
-          <label htmlFor="optionTwo">
-            B: {optionTwo.text}
-          </label>      
+      <form onSubmit={this.handleSubmit}>
+        <div className="form-group">
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              id="optionOne"
+              value="optionOne"
+              checked={this.state.answer === "optionOne"}
+              onChange={this.handleAnswer}
+            />
+            <label
+              className="form-check-label"
+              htmlFor="optionOne"
+            >
+              {optionOne.text}
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              id="optionTwo"
+              value="optionTwo"
+              checked={this.state.answer === "optionTwo"}
+              onChange={this.handleAnswer}
+            />
+            <label
+              className="form-check-label"
+              htmlFor="optionTwo"
+            >
+              {optionTwo.text}
+            </label>      
+          </div>
         </div>
         <input
+          className="btn btn-primary"
           type="submit"
           value="submit"
         />

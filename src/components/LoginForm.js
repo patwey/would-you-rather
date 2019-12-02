@@ -20,44 +20,50 @@ class LoginForm extends React.Component {
 
   render() {
     const { users } = this.props;
+    const { selectedUser } = this.state;
 
     return (
-      <form
-        id="login-form"
-        onSubmit={this.handleSubmit}
-      >
-        <div>
-          <label htmlFor="user-select">
-            Please select a user:
-          </label>
-          <select
-            id="user-select"
-            onChange={this.handleUserSelect}
+      <div className="login-form container mt-5">
+        <div className="card">
+          <h5 className="card-header">
+            Log In
+          </h5>
+          <form
+            id="login-form"
+            className="card-body"
+            onSubmit={this.handleSubmit}
           >
-            <option
-              key="blank"
-              value=""
-            >
-              Select a user
-            </option>
-            {Object.entries(users).map(([id, user]) => (
-              <option
-                key={id}
-                value={id}
+            <div className="form-group">
+              <select
+                className="form-control"
+                id="user-select"
+                onChange={this.handleUserSelect}
               >
-                {user.name}
-              </option>
-            ))}
-          </select>
+                <option
+                  key="blank"
+                  value=""
+                >
+                  Select a user
+                </option>
+                {Object.entries(users).map(([id, user]) => (
+                  <option
+                    key={id}
+                    value={id}
+                  >
+                    {user.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <input
+              className="btn btn-primary"
+              type="submit"
+              value="Log In"
+              disabled={selectedUser === ""}
+            />
+          </form>
         </div>
-        <div>
-          <input
-            id="login-submit"
-            type="submit"
-            value="Log In"
-          />
-        </div>
-      </form>
+      </div>
     );
   }
 }

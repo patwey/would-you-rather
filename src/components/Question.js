@@ -10,23 +10,27 @@ function Question({
   authedUser,
 }) {
   return (
-    <div className="question">
-      <div className="question__header">
+    <div className="card mt-5">
+      <div className="card-header">
         <img
           className="user-avatar"
           src={questionUser.avatarURL}
           alt="User avatar"
         />
-        Would you rather?
+        <span className="ml-2 h5">
+          Would you rather?
+        </span>
       </div>
-      {isAnswered ? (
-        <QuestionResults
-          question={question}
-          authedUser={authedUser}
-        />
-      ) : (
-        <QuestionAnswerForm question={question} />
-      )}
+      <div className="card-body">
+        {isAnswered ? (
+          <QuestionResults
+            question={question}
+            authedUser={authedUser}
+          />
+        ) : (
+          <QuestionAnswerForm question={question} />
+        )}
+      </div>
     </div>
   );
 }

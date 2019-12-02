@@ -16,26 +16,25 @@ function QuestionOverview({
   } = user;
   
   return (
-    <div className="question-overview">
-      <div className="question-overview__header">
+    <div className="list-group-item card-body">
+      <div className="mb-2">
         <img
           className="user-avatar"
           src={avatarUrl}
           alt="User avatar"
         />
-        <span>{name}</span>
+        <span className="h5 card-title ml-2">{name}</span>
       </div>
-      <div className="question-overview__body">
-        <div className="question-overview__option">
-          A: {optionOne.text}
-        </div>
-        <div className="question-overview__option">
-          B: {optionTwo.text}
-        </div>
-        <Link
-          to={`questions/${id}`}
-          className="question-overview__link"
-        >
+      <div className="card-text container">
+        <ul>
+          <li>
+            {optionOne.text}
+          </li>
+          <li>
+            {optionTwo.text}
+          </li>
+        </ul>
+        <Link to={`questions/${id}`}>
           View
         </Link>
       </div>

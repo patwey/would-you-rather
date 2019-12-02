@@ -19,23 +19,23 @@ class QuestionOverviewList extends React.Component {
     const questions = showUnanswered ? unansweredQuestions : answeredQuestions;
     
     return (
-      <div id="question-overview-list">
-        <div className="question-type-links">
+      <div className="card mt-5">
+        <div className="card-header text-center">
           <span
-            className="question-type-link"
+            className="btn btn-link font-weight-bold"
             onClick={() => this.handleShowUnanswered(true)}
           >
-            Unanswered
+            Unanswered Questions
           </span>
-          /
+          <span className="font-weight-bold">/</span>
           <span
-            className="question-type-link"
+            className="btn btn-link font-weight-bold"
             onClick={() => this.handleShowUnanswered(false)}
           >
-            Answered
+            Answered Questions
           </span>
         </div>
-        <div className="question-overviews">
+        <div className="list-group list-group-flush">
           {questions.map((question) => (
             <QuestionOverview
               key={question.id}

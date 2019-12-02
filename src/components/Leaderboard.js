@@ -7,14 +7,16 @@ function Leaderboard({
   users,
 }) {
   return (
-    <div className="leaderboard">
-      <div className="leaderboard__header">
-        Leaderboard:
-      </div>
+    <div className="card mt-5">
+      <h5 className="card-header">
+        Leaderboard
+      </h5>
 
-      {users.map((user) => (
-        <LeaderboardUser key={user.id} user={user} />
-      ))}
+      <div className="list-group list-group-flush">
+        {users.map((user) => (
+          <LeaderboardUser key={user.id} user={user} />
+        ))}
+      </div>
     </div>
   );
 }

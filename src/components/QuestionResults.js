@@ -20,28 +20,28 @@ function QuestionResults({
 
   const optionClass = (option) => (
     option.votes.includes(authedUser)
-      ? "question-results__option--active"
-      : "question-results__option"
+      ? "text-primary font-weight-bold"
+      : ""
   );
   
   return (
     <div className="question-results">
       <div className={optionClass(optionOne)}>
-        <div className="question-results__option-text">
-          A: {optionOne.text}
-        </div>
-        <div className="question-results__option-statistics">
+        {optionOne.text}
+      </div>
+      <ul>
+        <li>
           {voteStatistics(optionOne)}
-        </div>
-      </div>
+        </li>
+      </ul>
       <div className={optionClass(optionTwo)}>
-        <div className="question-results__option-text">
-          B: {optionTwo.text}
-        </div>
-        <div className="question-results__option-statistics">
-          {voteStatistics(optionTwo)}
-        </div>
+        {optionTwo.text}
       </div>
+      <ul>
+        <li>
+          {voteStatistics(optionTwo)}
+        </li>
+      </ul>
     </div>
   );
 }

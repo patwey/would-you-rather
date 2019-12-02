@@ -13,25 +13,23 @@ function LeaderboardUser({
   } = user;
   
   return (
-    <div className="leaderboard-user">
-      <div className="leaderboard-user__header">
+    <div className="list-group-item card-body">
+      <div className="mb-2">
         <img
           className="user-avatar"
           src={avatarUrl}
           alt="User avatar"
         />
-        <div className="leaderboard-user__name">
-          {name}
-        </div>
-        <ul className="leaderboard-user__statistics">
-          <li>
-            Asked: {questionCount(user)}
-          </li>
-          <li>
-            Answered: {answerCount(user)}
-          </li>
-        </ul>
+        <span className="h5 card-title ml-2">{name}</span>
       </div>
+      <ul className="leaderboard-user__statistics">
+        <li>
+          Asked: {questionCount(user)}
+        </li>
+        <li>
+          Answered: {answerCount(user)}
+        </li>
+      </ul>
     </div>
   );
 }

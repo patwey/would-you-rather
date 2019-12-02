@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import '../App.css';
 import { handleInitialData } from '../actions/shared';
 import QuestionOverviewList from './QuestionOverviewList';
@@ -9,6 +9,7 @@ import NewQuestionForm from './NewQuestionForm';
 import Leaderboard from './Leaderboard';
 import LoginForm from './LoginForm';
 import Navbar from './Navbar';
+import NotFound from './NotFound';
 
 class App extends React.Component {
   componentDidMount() {
@@ -25,16 +26,19 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Navbar authedUser={authedUser} />
-          {loggedIn ? (
-            <>
-              <Route path='/' exact component={QuestionOverviewList} />
-              <Route path='/questions/:question_id' component={Question} />
-              <Route path='/add' component={NewQuestionForm} />
-              <Route path='/leaderboard' component={Leaderboard} />
-            </>
-          ) : (
-            <LoginForm />
-          )}
+          <div className="container">
+            {loggedIn ? (
+              <Switch>
+                <Route path='/' exact component={QuestionOverviewList} />
+                <Route path='/questions/:question_id' component={Question} />
+                <Route path='/add' component={NewQuestionForm} />
+                <Route path='/leaderboard' component={Leaderboard} />
+                <Route component={NotFound} />
+              </Switch>
+            ) : (
+              <LoginForm />
+            )}
+          </div>
         </Router>
       </div>
     );

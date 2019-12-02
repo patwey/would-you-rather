@@ -13,46 +13,51 @@ class Navbar extends React.Component {
   render() {
     const { loggedInUser } = this.props;
 
-    return (
-      <div className="navbar">
-        {loggedInUser && (
-          <>
-            <div className="navbar__links">
-              <NavLink
-                to="/"
-                activeClassName="navbar__link--active"
-                className="navbar__link"
-              >
-                Dashboard
-              </NavLink>
-              <NavLink
-                to="/leaderboard"
-                activeClassName="navbar__link--active"
-                className="navbar__link"
-              >
-                Leaderboard
-              </NavLink>
-              <NavLink
-                to="/add"
-                activeClassName="navbar__link--active"
-                className="navbar__link"
-              >
-                Add Question
-              </NavLink>
+    return (      
+      loggedInUser && (
+        <nav className="navbar navbar-light navbar-expand-lg bg-light"> 
+          <div className="navbar-nav mr-auto">
+            <NavLink
+              to="/"
+              exact
+              activeClassName="active"
+              className="nav-item nav-link"
+            >
+              Dashboard
+            </NavLink>
+            <NavLink
+              to="/leaderboard"
+              activeClassName="active"
+              className="nav-item nav-link nav-link"
+            >
+              Leaderboard
+            </NavLink>
+            <NavLink
+              to="/add"
+              activeClassName="active"
+              className="nav-item nav-link"
+            >
+              Add Question
+            </NavLink>
+          </div>
+          <div className="mx-2">
+            <img
+              className="nav-item user-avatar mr-2"
+              src={loggedInUser.avatarURL}
+              alt="User avatar"
+            />
+            <div className="nav-item navbar-text user-name mr-2">
+              {loggedInUser.name}
             </div>
-            <div className="navbar__user-actions">
-              <img className="user-avatar" src={loggedInUser.avatarURL} alt="User avatar" />
-              <div className="user-name">{loggedInUser.name}</div>
-              <button
-                className="navbar__user-actions__link"
-                onClick={this.handleLogOut}
-              >
-                Log out
-              </button>
-            </div>
-          </>
-        )}
-      </div>
+            <button
+              className="nav-item btn btn-sm btn-outline-secondary mr-2"
+              onClick={this.handleLogOut}
+            >
+              Log out
+            </button>
+          </div>
+        </nav>          
+      )
     );
   }
 }
